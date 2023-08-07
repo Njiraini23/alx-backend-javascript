@@ -1,4 +1,4 @@
-export default function createEmployeesObject (employeesList) {
+export default function createEmployeesObject(employeesList) {
   const allEmployees = {
     ...employeesList,
   };
