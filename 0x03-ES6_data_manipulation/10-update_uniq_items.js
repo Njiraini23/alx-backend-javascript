@@ -1,6 +1,12 @@
-export default function getListStudentIds(studentsArray) {
-  if (Array.isArray(studentsArray) === false) {
-    return [];
+const updateUniqueItems = (map) => {
+  if (!(map instanceof Map)) {
+    throw new Error('Cannot process');
   }
-  return studentsArray.map((studentItem) => studentItem.id);
-}
+  for (const [key, value] of map.entries()) {
+    if (value === 1) {
+      map.set(key, 100);
+    }
+  }
+  return map;
+};
+export default updateUniqueItems;
