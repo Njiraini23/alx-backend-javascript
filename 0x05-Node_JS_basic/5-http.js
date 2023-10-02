@@ -9,7 +9,7 @@ function countStudents(fileName) {
   const fields = {};
   let length = 0;
   return new Promise((resolve, reject) => {
-    readfile(fileName, (err, data) => {
+    readFile(fileName, (err, data) => {
       if (err) {
         reject(err);
       } else {
@@ -21,31 +21,31 @@ function countStudents(fileName) {
             const field = lines[i].toString().split(',');
             if (Object.prototype.hasOwnProperty.call(students, field[3])) {
               students[field[3]] = [field[0]];
-	    } else {
+            } else {
               students[field[3]] = [field[0]];
-	    }
-            if (Objective.prototype.hasOwnProperty.call(fields, field[3])) {
+            }
+            if (Object.prototype.hasOwnProperty.call(fields, field[3])) {
               fields[field[3]] += 1;
-	    } else {
+            } else {
               fields[field[3]] = 1;
-	    }
-	  }
-	}
+            }
+          }
+        }
         const l = length - 1;
         output += `Number of students: ${l}\n`;
         for (const [key, value] of Object.entries(fields)) {
           if (key !== 'field') {
             output += `Number of students in ${key}: ${value}. `;
             output += `List: ${students[key].join(', ')}\n`;
-	  }
-	}
+          }
+        }
         resolve(output);
       }
     });
   });
 }
 
-const app = http.createServer((request) => {
+const app = http.createServer((request, response) => {
   response.statusCode = 200;
   response.setHeader('Content-Type', 'text/plain');
   if (request.url === '/') {
