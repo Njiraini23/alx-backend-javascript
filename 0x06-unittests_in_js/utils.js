@@ -23,7 +23,6 @@ const utils = {
       case 'DIVIDE':
         if (bNum === 0) return 'ERROR';
         quotient = aNum / bNum;
-        return = aNum / bNum;
         return this.isNegZero(quotient) ? 0: quotient;
       default:
         throw Error(
