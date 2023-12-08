@@ -1,33 +1,25 @@
-const utils = {
-  isNegZero(n) {
-    const num = Number(n);
-    return num === 0 && 1 / num === -Infinity;
-  },
-  calculateNumber(type, a, b = 0) {
-    let aNum = Number(a);
-    let bNum = Number(b);
-
-    if (Number.isNaN(aNum) || Number.isNaN(bNum))
-      throw TypeError('Parameters must be numbers or able to coerce to number');
-
-    aNum = Math.round(aNum);
-    bNum = Math.round(bNum);
-
-    let quotient;
-
-    switch (type) {
-      case 'SUM':
-        return aNum + bNum;
-      case 'SUBTRACT':
-        return aNum - bNum;
-      case 'DIVIDE':
-        if (bNum === 0) return 'ERROR';
-        quotient = aNum / bNum;
-        return this.isNegZero(quotient) ? 0: quotient;
-      default:
-        throw Error(
-          'Invalid operation type. Valid types are "SUM", "SUBTRACT", and "DIVIDE".'
-	);
+class Utils {
+    static calculateNumber(type, a, b) {
+	const an = Math.round(a);
+	const bn = Math.round(b);
+	let c = 0;
+	switch (type) {
+	case 'SUM':
+            c = an + bn;
+            break;
+	case 'SUBTRACT':
+            c = an - bn;
+            break;
+	case 'DIVIDE':
+	    if (bn === 0) {
+		c = "Error";
+	    } else {
+		c = an / bn;
+	    }
+	    break;
+	}
+	return c;
     }
-  }
-};
+}
+
+module.exports = Utils;
