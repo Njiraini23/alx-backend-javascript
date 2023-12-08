@@ -3,7 +3,7 @@ const app = express();
 const port = 7865;
 
 app.get('/', (request, response) => {
-  response.send('welcome to the payment system');
+  response.send('Welcome to the payment system');
 });
 
 app.listen(port, () => {
